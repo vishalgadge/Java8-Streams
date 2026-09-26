@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Stream API - Complete 87+ Function Index & Cheat Sheet</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-purple: #c084fc;
+            --accent-green: #4ade80;
+            --accent-orange: #fb923c;
+            --code-bg: #090d16;
+            --border-color: #334155;
+        }
+
+        @media print {
+            :root {
+                --bg-color: #ffffff;
+                --card-bg: #ffffff;
+                --text-color: #000000;
+                --text-muted: #475569;
+                --accent-blue: #0284c7;
+                --accent-purple: #9333ea;
+                --accent-green: #16a34a;
+                --accent-orange: #ea580c;
+                --code-bg: #f1f5f9;
+                --border-color: #cbd5e1;
+            }
+            body { padding: 0 !important; }
+            .no-print { display: none !important; }
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle { color: var(--text-muted); font-size: 1.05rem; }
+
+        .toolbar {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            padding: 0.75rem 1.25rem;
+            width: 400px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+        .search-box:focus { outline: 2px solid var(--accent-blue); }
+
+        .counter-badge {
+            background-color: var(--accent-purple);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .print-btn {
+            background: linear-gradient(135deg, var(--accent-blue), #2563eb);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+            margin: 2.5rem 0 1rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        tr:hover td { background-color: rgba(255, 255, 255, 0.02); }
+
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.55rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            border-radius: 9999px;
+            text-transform: uppercase;
+        }
+        .badge-creation { background-color: rgba(192, 132, 252, 0.2); color: var(--accent-purple); }
+        .badge-intermediate { background-color: rgba(56, 189, 248, 0.2); color: var(--accent-blue); }
+        .badge-terminal { background-color: rgba(74, 222, 128, 0.2); color: var(--accent-green); }
+        .badge-collector { background-color: rgba(251, 146, 60, 0.2); color: var(--accent-orange); }
+        .badge-primitive { background-color: rgba(236, 72, 153, 0.2); color: #ec4899; }
+        .badge-base { background-color: rgba(148, 163, 184, 0.2); color: var(--text-muted); }
+
+        code {
+            background-color: var(--code-bg);
+            padding: 0.15rem 0.35rem;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Fira Code', monospace;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Java Stream API - Exhaustive 87+ Function Index</h1>
+        <p class="subtitle">Complete method index including Stream&lt;T&gt;, IntStream, LongStream, DoubleStream, BaseStream &amp; Collectors overloads</p>
+        <div class="toolbar no-print">
+            <span class="counter-badge" id="itemCount">87+ Methods Cataloged</span>
+            <input type="text" id="searchInput" class="search-box" placeholder="🔍 Filter any function (e.g. mapMulti, teeing, rangeClosed, groupingBy)..." onkeyup="filterTable()">
+            <button class="print-btn" onclick="window.print()">🖨️ Export PDF</button>
+        </div>
+    </header>
+
+    <h2 class="section-title">📜 Complete 87+ Stream Methods Master Table</h2>
+    <table id="methodsTable">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Category</th>
+                <th>Function Signature</th>
+                <th>Return Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- CREATION -->
+            <tr><td>1</td><td><span class="badge badge-creation">Creation</span></td><td><code>Stream.of(T t)</code></td><td><code>Stream&lt;T&gt;</code></td><td>Creates a single-element stream</td></tr>
+            <tr><td>2</td><td><span class="badge badge-creation">Creation</span></td><td><code>Stream.of(T... values)</code></td><td><code>Stream&lt;T&gt;</code></td><td>Creates stream from varargs or array</td></tr>
+            <tr><td>3</td><td><span class="badge badge-creation">Creation</span></td><td><code>Stream.ofNullable(T t)</code></td><td><code>Stream&lt;T&gt;</code></td><td>Stream of 1 element if non-null, else empty (Java 9+)</td></tr>
+            <tr><td>4</td><td><span class="badge badge-creation">Creation</span></td><td><code>Stream.empty()</code></td><td><code>Stream&lt;T&gt;</code></td><td>Returns an empty sequential stream</td></tr>
+            <tr><td>5</td><td><span class="badge badge-creation">Creation</span></td><td><code>Stream.builder()</code></td><td><code>Builder&lt;T&gt;</code></td><td>Returns a builder for building a stream dynamically</td></tr>
+            <tr><td>6</td><td><span class="badge badge-creation">Creation</span></td><td><code>Stream.concat(a, b)</code></td><td><code>Stream&lt;T&gt;</code></td><td>Concatenates two streams sequentially</td></tr>
+            <tr><td>7</td><td><span class="badge badge-creation">Creation</span></td><td><code>Stream.iterate(seed, f)</code></td><td><code>Stream&lt;T&gt;</code></td><td>Infinite sequential stream applying unary operator f</td></tr>
+            <tr><td>8</td><td><span class="badge badge-creation">Creation</span></td><td><code>Stream.iterate(seed, pred, f)</code></td><td><code>Stream&lt;T&gt;</code></td><td>Bounded stream while predicate is true (Java 9+)</td></tr>
+            <tr><td>9</td><td><span class="badge badge-creation">Creation</span></td><td><code>Stream.generate(Supplier)</code></td><td><code>Stream&lt;T&gt;</code></td><td>Infinite stream generated by Supplier</td></tr>
+            <tr><td>10</td><td><span class="badge badge-creation">Creation</span></td><td><code>Arrays.stream(array)</code></td><td><code>Stream / IntStream</code></td><td>Creates stream from array or range of array</td></tr>
+            <tr><td>11</td><td><span class="badge badge-creation">Creation</span></td><td><code>Collection.stream()</code></td><td><code>Stream&lt;T&gt;</code></td><td>Creates sequential stream from Collection</td></tr>
+            <tr><td>12</td><td><span class="badge badge-creation">Creation</span></td><td><code>Collection.parallelStream()</code></td><td><code>Stream&lt;T&gt;</code></td><td>Creates parallel stream from Collection</td></tr>
+
+            <!-- INTERMEDIATE -->
+            <tr><td>13</td><td><span class="badge badge-intermediate">Intermediate</span></td><td><code>filter(Predicate)</code></td><td><code>Stream&lt;T&gt;</code></td><td>Keeps elements matching predicate</td></tr>
+            <tr><td>14</td><td><span class="badge badge-intermediate">Intermediate</span></td><td><code>map(Function)</code></td><td><code>Stream&lt;R&gt;</code></td><td>Transforms each element into another object</td></tr>
+            <tr><td>15</td><td><span class="badge badge-intermediate">Intermediate</span></td><td><code>mapToInt(ToIntFunction)</code></td><td><code>IntStream</code></td><td>Maps elements to primitive IntStream</td></tr>
+            <tr><td>16</td><td><span class="badge badge-intermediate">Intermediate</span></td><td><code>mapToLong(ToLongFunction)</code></td><td><code>LongStream</code></td><td>Maps elements to primitive LongStream</td></tr>
+            <tr><td>17</td><td><span class="badge badge-intermediate">Intermediate</span></td><td><code>mapToDouble(ToDoubleFunction)</code></td><td><code>DoubleStream</code></td><td>Maps elements to primitive DoubleStream</td></tr>
+            <tr><td>18</td><td><span class="badge badge-intermediate">Intermediate</span></td><td><code>flatMap(Function)</code></td><td><code>Stream&lt;R&gt;</code></td><td>Flattens nested streams into 1D stream</td></tr>
+            <tr><td>19</td><td><span class="badge badge-intermediate">Intermediate</span></td><td><code>flatMapToInt(Function)</code></td><td><code>IntStream</code></td><td>Flattens nested streams into IntStream</td></tr>
+            <tr><td>20</td><td><span class="badge badge-intermediate">Intermediate</span></td><td><code>flatMapToLong(Function)</code></td><td><code>LongStream</code></td><td>Flattens nested streams into LongStream</td></tr>
+            <tr><td>21</td><td><span class="badge badge-intermediate">Intermediate</span></td><td><code>flatMapToDouble(Function)</code></td><td><code>DoubleStream</code></td><td>Flattens nested streams into DoubleStream</td></tr>
+            <tr><td>22</td><td><span class="badge badge-intermediate">Intermediate</span></td><td><code>mapMulti(BiConsumer)</code></td><td><code>Stream&lt;R&gt;</code></td><td>1-to-many imperative element mapper (Java 16+)</td></tr>
+            <tr><td>23</td><td><span class="badge badge-intermediate">Intermediate</span></td><td><code>mapMultiToInt(BiConsumer)</code></td><td><code>IntStream</code></td><td>1-to-many mapper producing IntStream (Java 16+)</td></tr>
+            <tr><td>24</td><td><span class="badge badge-intermediate">Intermediate</span></td><td><code>mapMultiToLong(BiConsumer)</code></td><td><code>LongStream</code></td><td>1-to-many mapper producing LongStream (Java 16+)</td></tr>
+            <tr><td>25</td><td><span class="badge badge-intermediate">Intermediate</span></td><td><code>mapMultiToDouble(BiConsumer)</code></td><td><code>DoubleStream</code></td><td>1-to-many mapper producing DoubleStream (Java 16+)</td></tr>
+            <tr><td>26</td><td><span class="badge badge-intermediate">Intermediate</span></td><td><code>distinct()</code></td><td><code>Stream&lt;T&gt;</code></td><td>Removes duplicates via equals() and hashCode()</td></tr>
+            <tr><td>27</td><td><span class="badge badge-intermediate">Intermediate</span></td><td><code>sorted()</code></td><td><code>Stream&lt;T&gt;</code></td><td>Sorts elements in natural order</td></tr>
+            <tr><td>28</td><td><span class="badge badge-intermediate">Intermediate</span></td><td><code>sorted(Comparator)</code></td><td><code>Stream&lt;T&gt;</code></td><td>Sorts elements using custom comparator</td></tr>
+            <tr><td>29</td><td><span class="badge badge-intermediate">Intermediate</span></td><td><code>peek(Consumer)</code></td><td><code>Stream&lt;T&gt;</code></td><td>Inspects elements without modifying stream</td></tr>
+            <tr><td>30</td><td><span class="badge badge-intermediate">Intermediate</span></td><td><code>limit(maxSize)</code></td><td><code>Stream&lt;T&gt;</code></td><td>Truncates stream to at most maxSize elements</td></tr>
+            <tr><td>31</td><td><span class="badge badge-intermediate">Intermediate</span></td><td><code>skip(n)</code></td><td><code>Stream&lt;T&gt;</code></td><td>Discards first n elements</td></tr>
+            <tr><td>32</td><td><span class="badge badge-intermediate">Intermediate</span></td><td><code>takeWhile(Predicate)</code></td><td><code>Stream&lt;T&gt;</code></td><td>Takes elements while predicate is true (Java 9+)</td></tr>
+            <tr><td>33</td><td><span class="badge badge-intermediate">Intermediate</span></td><td><code>dropWhile(Predicate)</code></td><td><code>Stream&lt;T&gt;</code></td><td>Drops elements while predicate is true (Java 9+)</td></tr>
+
+            <!-- TERMINAL -->
+            <tr><td>34</td><td><span class="badge badge-terminal">Terminal</span></td><td><code>collect(Collector)</code></td><td><code>R</code></td><td>Accumulates elements into a container</td></tr>
+            <tr><td>35</td><td><span class="badge badge-terminal">Terminal</span></td><td><code>collect(supplier, accumulator, combiner)</code></td><td><code>R</code></td><td>Custom mutable reduction</td></tr>
+            <tr><td>36</td><td><span class="badge badge-terminal">Terminal</span></td><td><code>reduce(BinaryOperator)</code></td><td><code>Optional&lt;T&gt;</code></td><td>Reduces elements into single Optional value</td></tr>
+            <tr><td>37</td><td><span class="badge badge-terminal">Terminal</span></td><td><code>reduce(identity, BinaryOperator)</code></td><td><code>T</code></td><td>Reduces with identity starting value</td></tr>
+            <tr><td>38</td><td><span class="badge badge-terminal">Terminal</span></td><td><code>reduce(identity, accumulator, combiner)</code></td><td><code>U</code></td><td>Parallel reduction with explicit combiner</td></tr>
+            <tr><td>39</td><td><span class="badge badge-terminal">Terminal</span></td><td><code>forEach(Consumer)</code></td><td><code>void</code></td><td>Iterates action over all elements</td></tr>
+            <tr><td>40</td><td><span class="badge badge-terminal">Terminal</span></td><td><code>forEachOrdered(Consumer)</code></td><td><code>void</code></td><td>Iterates preserving encounter order</td></tr>
+            <tr><td>41</td><td><span class="badge badge-terminal">Terminal</span></td><td><code>toArray()</code></td><td><code>Object[]</code></td><td>Returns Object array of elements</td></tr>
+            <tr><td>42</td><td><span class="badge badge-terminal">Terminal</span></td><td><code>toArray(IntFunction generator)</code></td><td><code>A[]</code></td><td>Returns typed array (e.g. String[]::new)</td></tr>
+            <tr><td>43</td><td><span class="badge badge-terminal">Terminal</span></td><td><code>toList()</code></td><td><code>List&lt;T&gt;</code></td><td>Returns unmodifiable List (Java 16+)</td></tr>
+            <tr><td>44</td><td><span class="badge badge-terminal">Terminal</span></td><td><code>min(Comparator)</code></td><td><code>Optional&lt;T&gt;</code></td><td>Returns minimum element by comparator</td></tr>
+            <tr><td>45</td><td><span class="badge badge-terminal">Terminal</span></td><td><code>max(Comparator)</code></td><td><code>Optional&lt;T&gt;</code></td><td>Returns maximum element by comparator</td></tr>
+            <tr><td>46</td><td><span class="badge badge-terminal">Terminal</span></td><td><code>count()</code></td><td><code>long</code></td><td>Returns count of elements</td></tr>
+            <tr><td>47</td><td><span class="badge badge-terminal">Terminal</span></td><td><code>anyMatch(Predicate)</code></td><td><code>boolean</code></td><td>true if at least 1 element matches predicate</td></tr>
+            <tr><td>48</td><td><span class="badge badge-terminal">Terminal</span></td><td><code>allMatch(Predicate)</code></td><td><code>boolean</code></td><td>true if all elements match predicate</td></tr>
+            <tr><td>49</td><td><span class="badge badge-terminal">Terminal</span></td><td><code>noneMatch(Predicate)</code></td><td><code>boolean</code></td><td>true if zero elements match predicate</td></tr>
+            <tr><td>50</td><td><span class="badge badge-terminal">Terminal</span></td><td><code>findFirst()</code></td><td><code>Optional&lt;T&gt;</code></td><td>Retrieves first element in encounter order</td></tr>
+            <tr><td>51</td><td><span class="badge badge-terminal">Terminal</span></td><td><code>findAny()</code></td><td><code>Optional&lt;T&gt;</code></td><td>Retrieves any element (faster in parallel)</td></tr>
+
+            <!-- BASE STREAM -->
+            <tr><td>52</td><td><span class="badge badge-base">BaseStream</span></td><td><code>isParallel()</code></td><td><code>boolean</code></td><td>Returns true if stream executes in parallel</td></tr>
+            <tr><td>53</td><td><span class="badge badge-base">BaseStream</span></td><td><code>parallel()</code></td><td><code>S</code></td><td>Returns parallel stream counterpart</td></tr>
+            <tr><td>54</td><td><span class="badge badge-base">BaseStream</span></td><td><code>sequential()</code></td><td><code>S</code></td><td>Returns sequential stream counterpart</td></tr>
+            <tr><td>55</td><td><span class="badge badge-base">BaseStream</span></td><td><code>unordered()</code></td><td><code>S</code></td><td>Removes ordering constraints for optimization</td></tr>
+            <tr><td>56</td><td><span class="badge badge-base">BaseStream</span></td><td><code>onClose(Runnable)</code></td><td><code>S</code></td><td>Registers close callback handler</td></tr>
+            <tr><td>57</td><td><span class="badge badge-base">BaseStream</span></td><td><code>close()</code></td><td><code>void</code></td><td>Closes stream resources</td></tr>
+            <tr><td>58</td><td><span class="badge badge-base">BaseStream</span></td><td><code>iterator()</code></td><td><code>Iterator&lt;T&gt;</code></td><td>Adapts stream to standard Iterator</td></tr>
+            <tr><td>59</td><td><span class="badge badge-base">BaseStream</span></td><td><code>spliterator()</code></td><td><code>Spliterator&lt;T&gt;</code></td><td>Adapts stream to Spliterator</td></tr>
+
+            <!-- PRIMITIVE SPECIFICS -->
+            <tr><td>60</td><td><span class="badge badge-primitive">Primitive</span></td><td><code>IntStream.range(start, end)</code></td><td><code>IntStream</code></td><td>Generates range start to end-1</td></tr>
+            <tr><td>61</td><td><span class="badge badge-primitive">Primitive</span></td><td><code>IntStream.rangeClosed(start, end)</code></td><td><code>IntStream</code></td><td>Generates range start to end inclusive</td></tr>
+            <tr><td>62</td><td><span class="badge badge-primitive">Primitive</span></td><td><code>IntStream.sum() / LongStream.sum()</code></td><td><code>int / long</code></td><td>Calculates sum of primitive stream</td></tr>
+            <tr><td>63</td><td><span class="badge badge-primitive">Primitive</span></td><td><code>average()</code></td><td><code>OptionalDouble</code></td><td>Calculates average of primitive stream</td></tr>
+            <tr><td>64</td><td><span class="badge badge-primitive">Primitive</span></td><td><code>summaryStatistics()</code></td><td><code>Int/Long/DoubleSummaryStatistics</code></td><td>Returns stats (count, sum, min, max, avg)</td></tr>
+            <tr><td>65</td><td><span class="badge badge-primitive">Primitive</span></td><td><code>boxed()</code></td><td><code>Stream&lt;Integer/Long/Double&gt;</code></td><td>Boxes primitive stream to Object stream</td></tr>
+            <tr><td>66</td><td><span class="badge badge-primitive">Primitive</span></td><td><code>asLongStream() / asDoubleStream()</code></td><td><code>Long/DoubleStream</code></td><td>Widens primitive int stream</td></tr>
+            <tr><td>67</td><td><span class="badge badge-primitive">Primitive</span></td><td><code>mapToObj(IntFunction)</code></td><td><code>Stream&lt;U&gt;</code></td><td>Maps primitive elements to Object stream</td></tr>
+
+            <!-- COLLECTORS -->
+            <tr><td>68</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.toList()</code></td><td><code>Collector</code></td><td>Collects into List</td></tr>
+            <tr><td>69</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.toSet()</code></td><td><code>Collector</code></td><td>Collects into Set</td></tr>
+            <tr><td>70</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.toUnmodifiableList()</code></td><td><code>Collector</code></td><td>Collects into unmodifiable List (Java 10+)</td></tr>
+            <tr><td>71</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.toUnmodifiableSet()</code></td><td><code>Collector</code></td><td>Collects into unmodifiable Set (Java 10+)</td></tr>
+            <tr><td>72</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.toCollection(Supplier)</code></td><td><code>Collector</code></td><td>Collects into custom Collection (e.g. LinkedList)</td></tr>
+            <tr><td>73</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.toMap(keyMap, valMap)</code></td><td><code>Collector</code></td><td>Collects into Map</td></tr>
+            <tr><td>74</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.toMap(k, v, mergeFn)</code></td><td><code>Collector</code></td><td>Collects into Map handling duplicate keys</td></tr>
+            <tr><td>75</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.toMap(k, v, mergeFn, mapFactory)</code></td><td><code>Collector</code></td><td>Collects into custom Map implementation</td></tr>
+            <tr><td>76</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.toUnmodifiableMap(k, v)</code></td><td><code>Collector</code></td><td>Collects into unmodifiable Map (Java 10+)</td></tr>
+            <tr><td>77</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.toConcurrentMap(...)</code></td><td><code>Collector</code></td><td>Collects into ConcurrentMap</td></tr>
+            <tr><td>78</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.joining()</code></td><td><code>Collector</code></td><td>Concatenates Strings</td></tr>
+            <tr><td>79</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.joining(delimiter)</code></td><td><code>Collector</code></td><td>Concatenates Strings with delimiter</td></tr>
+            <tr><td>80</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.joining(delim, prefix, suffix)</code></td><td><code>Collector</code></td><td>Concatenates with delimiter, prefix, and suffix</td></tr>
+            <tr><td>81</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.groupingBy(classifier)</code></td><td><code>Collector</code></td><td>Groups elements by key</td></tr>
+            <tr><td>82</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.groupingBy(classifier, downstream)</code></td><td><code>Collector</code></td><td>Groups elements with secondary downstream collector</td></tr>
+            <tr><td>83</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.groupingBy(classifier, mapFactory, downstream)</code></td><td><code>Collector</code></td><td>Groups with custom map implementation & downstream</td></tr>
+            <tr><td>84</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.groupingByConcurrent(...)</code></td><td><code>Collector</code></td><td>Concurrent grouping into ConcurrentMap</td></tr>
+            <tr><td>85</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.partitioningBy(predicate)</code></td><td><code>Collector</code></td><td>Partitions elements into true/false Map</td></tr>
+            <tr><td>86</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.partitioningBy(pred, downstream)</code></td><td><code>Collector</code></td><td>Partitions with secondary downstream collector</td></tr>
+            <tr><td>87</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.counting()</code></td><td><code>Collector</code></td><td>Downstream collector counting elements</td></tr>
+            <tr><td>88</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.summingInt / Long / Double</code></td><td><code>Collector</code></td><td>Downstream collector summing values</td></tr>
+            <tr><td>89</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.averagingInt / Long / Double</code></td><td><code>Collector</code></td><td>Downstream collector calculating average</td></tr>
+            <tr><td>90</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.summarizingInt / Long / Double</code></td><td><code>Collector</code></td><td>Downstream summary statistics</td></tr>
+            <tr><td>91</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.minBy(Comparator) / maxBy()</code></td><td><code>Collector</code></td><td>Downstream min/max calculation</td></tr>
+            <tr><td>92</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.reducing(...)</code></td><td><code>Collector</code></td><td>Downstream reduction (1, 2, or 3-arg versions)</td></tr>
+            <tr><td>93</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.collectingAndThen(downstream, finisher)</code></td><td><code>Collector</code></td><td>Applies finisher function after collecting</td></tr>
+            <tr><td>94</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.mapping(mapper, downstream)</code></td><td><code>Collector</code></td><td>Maps elements before passing to downstream</td></tr>
+            <tr><td>95</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.flatMapping(mapper, downstream)</code></td><td><code>Collector</code></td><td>Flattens elements before downstream (Java 9+)</td></tr>
+            <tr><td>96</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.filtering(predicate, downstream)</code></td><td><code>Collector</code></td><td>Filters elements before downstream (Java 9+)</td></tr>
+            <tr><td>97</td><td><span class="badge badge-collector">Collectors</span></td><td><code>Collectors.teeing(downstream1, downstream2, merger)</code></td><td><code>Collector</code></td><td>Combines 2 downstream collectors into 1 (Java 12+)</td></tr>
+        </tbody>
+    </table>
+
+    <script>
+        function filterTable() {
+            var input = document.getElementById("searchInput");
+            var filter = input.value.toLowerCase();
+            var table = document.getElementById("methodsTable");
+            var tr = table.getElementsByTagName("tr");
+            var count = 0;
+
+            for (var i = 1; i < tr.length; i++) {
+                var text = tr[i].innerText.toLowerCase();
+                if (text.indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                    count++;
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+            document.getElementById("itemCount").innerText = count + " Methods Showing";
+        }
+    </script>
+</body>
+</html>
