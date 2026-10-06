@@ -1,6 +1,6 @@
 package com.streams;
 
-import com.streams.exercises.StreamExercises.Employee;
+import com.streams.model.Employee;
 import com.streams.solutions.StreamSolutions;
 
 import java.util.*;
